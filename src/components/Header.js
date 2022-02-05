@@ -34,7 +34,7 @@ function Header() {
           {/* Right */}
           <div className="text-white flex items-center text-xs space-x-6 mx-6 text-center whitespace-nowrap">
          
-          <div className="hidden lg:inline-flex items-center space-x-2 link" > 
+          <div className="hidden md:inline-flex items-center space-x-2 link" > 
             <img className="h-6" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/282/flag-india_1f1ee-1f1f3.png" alt="" /> 
             <ChevronDownIcon className="h-4" /> 
           </div>
