@@ -19,7 +19,7 @@ function Header() {
               objectFit="contain"
               className="cursor-pointer"
               />
-              <span className="hidden lg:inline absolute text-sm overflow-hidden cursor-pointer text-white top-[3px] left-[130px] ">  .amit</span>
+              <span className="hidden md:inline absolute text-sm overflow-hidden cursor-pointer text-white top-[3px] left-[130px] ">  .amit</span>
           </div>
 
           {/* search */}
