@@ -3,9 +3,16 @@ import {MenuIcon,
         SearchIcon,
         ShoppingCartIcon,
       ChevronDownIcon} from "@heroicons/react/outline"
+import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { selectItems } from "../slices/basketSlice";
 
 function Header() {
- 
+  const {data: session} = useSession();
+  const router = useRouter();
+  const items = useSelector(selectItems);
+  
   return (
     <header className="sticky top-0 z-50 inset-x-0 ">
       {/* Top Nav */}
@@ -13,13 +20,14 @@ function Header() {
       <div className="  flex align-self: flex-start items-center bg-amazon_blue p-1 flex-grow py-2 space-x-5">
           <div className="mt-2 flex items-center flex-grow sm:flex-grow-0 relative">          
             <Image
+              onClick = {() => router.push('/')}
               src="https://links.papareact.com/f90"
               width={150}
               height={40}
               objectFit="contain"
               className="cursor-pointer"
               />
-              <span className="absolute text-sm overflow-hidden cursor-pointer text-white top-[3px] left-[130px] ">  .amit</span>
+              <span className="hidden md:inline absolute text-sm overflow-hidden cursor-pointer text-white top-[3px] left-[130px] ">  .in</span>
           </div>
 
           {/* search */}
@@ -34,14 +42,16 @@ function Header() {
           {/* Right */}
           <div className="text-white flex items-center text-xs space-x-6 mx-6 text-center whitespace-nowrap">
          
-          <div className="hidden lg:inline-flex items-center space-x-2 link" > 
+          <div className="hidden md:inline-flex items-center space-x-2 link" > 
             <img className="h-6" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/282/flag-india_1f1ee-1f1f3.png" alt="" /> 
             <ChevronDownIcon className="h-4" /> 
           </div>
           
          
-            <div className="link">
-              <p>Hello! Amit Singh</p>
+            <div onClick={!session ? signIn : signOut } className="link">
+              <p>
+                {session ?  `Hello, ${session.user.name}` : "Hello, Sign in"}
+              </p>
               <p className="font-extrabold md:text-sm">Account & Lists</p>
             </div>
 
@@ -50,9 +60,11 @@ function Header() {
               <p className="font-extrabold md:text-sm">& Orders</p>
             </div>
 
-            <div className="relative link flex items-center">
+            <div onClick={() => router.push('/checkout')} className="relative link flex items-center">
               
-              <span className="absolute top-0 right-0 md:right-5 h-4 w-4  md:mt-1 bg-yellow-400 text-center rounded-full text-black font-bold">0</span>
+              <span className="absolute top-0 right-0 md:right-5 h-4 w-4  md:mt-1 bg-yellow-400 text-center rounded-full text-black font-bold">
+                {items.length}
+              </span>
 
               
 
