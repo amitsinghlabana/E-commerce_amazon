@@ -87,7 +87,7 @@ function Header(props) {
 
       </div>
 
-        <div className="md:hidden px-2 ml-3 bg-amazon_blue p-1 flex-grow py-2 space-x-5">
+        <div className="md:hidden px-2 ml-2 bg-amazon_blue p-1 flex-grow py-2 space-x-5">
           <div className="flex items-center h-10 rounded-md flex-grow cursor-pointer bg-yellow-400  hover:bg-yellow-500 md:hidden">
             <input className="flex-col p-2 h-full w-6 flex-grow flex-shrink rounded-l-md focus:outline-none" 
               placeholder={
