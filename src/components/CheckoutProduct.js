@@ -1,9 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import { StarIcon } from "@heroicons/react/solid";
+import { MinusSmIcon, PlusIcon, StarIcon, TrashIcon } from "@heroicons/react/solid";
 import Currency from "react-currency-formatter";
 import { useDispatch } from "react-redux";
-import { addToBasket, removeFromBasket } from "../slices/basketSlice";
+import { addToBasket, removeFromBasket, removeGroupedFromBasket } from "../slices/basketSlice";
+
 
 
 function CheckoutProduct({
@@ -15,9 +16,12 @@ function CheckoutProduct({
   category,
   image,
   hasPrime,
+  quantity,
 }) {
-  const dispatch = useDispatch();
+  const total = price * 50 * quantity;
 
+  const dispatch = useDispatch();
+  
   const addItemToBasket = () => {
     const product = {
       id,
@@ -38,8 +42,12 @@ function CheckoutProduct({
       dispatch(removeFromBasket({ id }));
   };
 
+  function removeGroupFromBasket() {
+    dispatch(removeGroupedFromBasket({ id }));
+}
+
   return (
-    <div className="grid grid-cols-5">
+    <div className="grid grid-cols-5 p-3 border-b">
       <Image src={image} height={200} width={200} objectFit="contain" />
 
       {/* Middle */}
@@ -54,7 +62,10 @@ function CheckoutProduct({
         </div>
 
         <p className="text-xs my-2 line-clamp-3">{description}</p>
-        <Currency quantity={price * 50} currency="INR" />
+          {quantity} × <Currency quantity={price * 50} currency="INR" /> ={" "}
+          <span>
+            <Currency quantity={total} currency="INR" />
+          </span>
 
         {hasPrime && (
           <div className="flex items-center space-x-2">
@@ -70,20 +81,36 @@ function CheckoutProduct({
 
       {/* Right add & remove buttons */}
       <div className="flex flex-col space-y-2 my-auto justify-self-end">
-        <button onClick={addItemToBasket} className="button">
+        {/* <button onClick={addItemToBasket} className="button">
           Add to Cart
-        </button>
-        <button onClick={removeItemFromBasket} className="button">
-          Remove from Cart
-        </button>
+        </button> */}
+        <div className="flex justify-between xs:justify-start">
+                    <button
+                        className="button my-1"
+                        onClick={removeItemFromBasket}>
+                        <MinusSmIcon className="h-3 text-black" />
+                    </button>
+                    <div className="p-1 m-1 whitespace-normal sm:p-1 sm:whitespace-nowrap">
+                        <span className="font-bold">{quantity}</span>
+                    </div>
+                    <button className="button my-1 " onClick={addItemToBasket}>
+                        <PlusIcon className="h-3 text-black" />
+                    </button>
+          </div>
+        
+
+                
+        {/* <button onClick={removeGroupFromBasket} className="p-2 bg-gradient-to-b from-yellow-200 to-yellow-400 border border-yellow-300 rounded-sm focus:outline-none focus:ring-1 focus:ring-yellow-500 active:from-yellow-500 justify-center  line-clamp-1"> */}
+          {/* Remove from Cart */}
+          <TrashIcon onClick={removeGroupFromBasket} className="h-8 text-yellow-500 cursor-pointer hover:text-yellow-600 items-center justify-center" />
+        {/* </button> */}
       </div>
 
-
      
-
-
-
     </div>
+
+
+
   );
 }
 
