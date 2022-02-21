@@ -57,7 +57,7 @@ function Header(props) {
             <ChevronDownIcon className="h-4" /> 
           </div>
           
-          <img src={session ? `${session.user.image}`:'https://toppng.com/uploads/preview/file-svg-user-icon-material-desi-11563317072p2p27gjccw.png'} alt="profileimg" className="sm:inline-flex  w-7 h-7 rounded-full mr-1 ml-1 hidden  "/>
+          <img src={session ? `${session.user.image}`:'https://toppng.com/uploads/preview/file-svg-user-icon-material-desi-11563317072p2p27gjccw.png'} alt="profileimg" className="sm:inline-flex  w-8 h-8 rounded-full mr-1 ml-1 hidden  "/>
             <div onClick={!session ? signIn : signOut } className="link">
               <p>
                 {session ?  `Hello, ${session.user.name}` : "Hello, Sign in"}
