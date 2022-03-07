@@ -30,8 +30,8 @@ function Bottomnav() {
 
             <div className="absolute flex flex-col right-5 text-center justify-items-center font-bold ">
                 {session ? (
-                    <p onClick={session ? signOut : null} className="link flex flex-col">Sign-Out</p>
-                ) : (<p className="hidden line-clamp-1">Sign out</p>)}
+                    <p onClick={session ? signOut : null} className="link">Sign-Out</p>
+                ) : (null)}
             </div>
         </div>
             
