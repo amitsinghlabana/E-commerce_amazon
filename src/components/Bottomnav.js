@@ -18,7 +18,7 @@ function Bottomnav() {
             </p>
 
             <a href="https://www.primevideo.com" target="_blank" className="link">Prime Video</a> 
-            <a href="https://business.amazon.in/" target="_blank" className="link">Amazon Business</a>
+            <a href="https://business.amazon.in/" target="_blank" className="link hidden lg:inline-flex">Amazon Business</a>
             <p className="link hidden lg:inline-flex ">Today's Deal</p>
             <a href="https://www.audible.in" target="_blank" className="link">Audible</a>
             <p className="link hidden lg:inline-flex">Electronics</p>
@@ -28,10 +28,10 @@ function Bottomnav() {
             <p className="link hidden lg:inline-flex">Shopper Toolkit</p>
             <a href="https://www.amazon.care" target="_blank"  className="link hidden lg:inline-flex">Health & Personal Care</a>
 
-            <div className="absolute flex  right-7 text-center justify-items-center font-bold ">
+            <div className="absolute flex flex-col right-5 text-center justify-items-center font-bold ">
                 {session ? (
-                    <p onClick={session ? signOut : null} className="link">Sign-Out</p>
-                ) : (<p className="hidden">Sign out</p>)}
+                    <p onClick={session ? signOut : null} className="link flex flex-col">Sign-Out</p>
+                ) : (<p className="hidden line-clamp-1">Sign out</p>)}
             </div>
         </div>
             
