@@ -1,7 +1,11 @@
 import React from 'react';
 import {MenuIcon} from "@heroicons/react/outline"
+import { signOut, useSession } from 'next-auth/react';
 
 function Bottomnav() {
+
+    const {data: session} = useSession();
+
   return( 
 
     <header>
@@ -23,7 +27,12 @@ function Bottomnav() {
             <p className="link hidden lg:inline-flex">Buy Again</p>
             <p className="link hidden lg:inline-flex">Shopper Toolkit</p>
             <a href="https://www.amazon.care" target="_blank"  className="link hidden lg:inline-flex">Health & Personal Care</a>
-            
+
+            <div className="absolute flex  right-7 text-center justify-items-center font-bold ">
+                {session ? (
+                    <p onClick={session ? signOut : null} className="link">Sign-Out</p>
+                ) : (<p className="hidden">Sign out</p>)}
+            </div>
         </div>
             
     </header>
