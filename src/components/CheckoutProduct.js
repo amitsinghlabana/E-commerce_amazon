@@ -18,7 +18,7 @@ function CheckoutProduct({
   hasPrime,
   quantity,
 }) {
-  const total = price * 50 * quantity;
+  const total = price * quantity;
 
   const dispatch = useDispatch();
   
@@ -62,7 +62,7 @@ function CheckoutProduct({
         </div>
 
         <p className="text-xs my-2 line-clamp-3">{description}</p>
-          {quantity} × <Currency quantity={price * 50} currency="INR" /> ={" "}
+          {quantity} × <Currency quantity={price} currency="INR" /> ={" "}
           <span>
             <Currency quantity={total} currency="INR" />
           </span>

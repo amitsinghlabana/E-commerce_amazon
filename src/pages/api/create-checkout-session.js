@@ -19,7 +19,7 @@ export default async (req, res) => {
     quantity: group.length,
     price_data: {
       currency: "inr",
-      unit_amount: group[0].price * 100 * 50,
+      unit_amount: group[0].price * 100,
       product_data: {
         name: group[0].title,
         images: [group[0].image],

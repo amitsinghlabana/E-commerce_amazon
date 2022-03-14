@@ -18,11 +18,11 @@ export default function Home({ products }) {
   }
   return (
     <div className="bg-gray-100">
-      <Head>
+      {/* <Head>
         <title>Amazon - Online shopping site</title>
         <link rel="icon" href="https://pngimg.com/uploads/amazon/amazon_PNG18.png" />
       
-      </Head>
+      </Head> */}
 
       <Header onSearchValue={filterProducts} />
       <Bottomnav />
@@ -32,6 +32,7 @@ export default function Home({ products }) {
         <Banner />
 
         {/* ProductFeed */}
+        
 
         {filteredProducts.length > 0 ? (
                     <ProductFeed products={filteredProducts} />
@@ -47,7 +48,8 @@ export default function Home({ products }) {
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
-  const products = await fetch("https://fakestoreapi.com/products")
+  // const products = await fetch("https://fakestoreapi.com/products")
+  const products = await fetch("https://asladminstore.vercel.app/api/products")
   .then(
     res => res.json()
   );

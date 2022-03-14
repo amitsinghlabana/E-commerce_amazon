@@ -104,7 +104,7 @@ function checkout() {
               </span>
 
               <span className="ml-2 text-lg  md:text-lg  lg:text-xl font-bold">
-                <Currency quantity={total * 50} currency="INR" />
+                <Currency quantity={total} currency="INR" />
               </span>
             </div>
           )}
@@ -117,7 +117,7 @@ function checkout() {
               <h2 className="whitespace-nowrap">
                 Subtotal ({items.length} items):{" "}
                 <span className="font-bold">
-                  <Currency quantity={total * 50} currency="INR" />
+                  <Currency quantity={total} currency="INR" />
                 </span>
               </h2>
 
