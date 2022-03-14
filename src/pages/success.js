@@ -18,7 +18,7 @@ function success() {
         <div className="flex flex-col p-10 bg-white">
           <div className="ml-2 items-center space-x-2 mb-4 text-4xl font-bold text-yellow-500 ">
             {session ? `Hello, ${session.user.name}` : (
-          <h2>Please sign in to se your orders</h2>
+              router.push('/')
           )}
           </div>
           
