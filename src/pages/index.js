@@ -12,7 +12,7 @@ export default function Home({ products }) {
 
   function filterProducts(searchText) {
       const matchedProducts = products.filter((product) =>
-          product.title.toLowerCase().includes(searchText.toLowerCase())
+          product.description.toLowerCase().includes(searchText.toLowerCase())
       );
       setProducts([...matchedProducts]);
   }
