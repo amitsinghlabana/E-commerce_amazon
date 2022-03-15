@@ -19,7 +19,7 @@ function Banner() {
       >
 
           <div>
-            <img loading='lazy' src="https://m.media-amazon.com/images/I/71QuUk6VrwL._SX3000_.jpg" alt="" />
+            <img loading='lazy' src="https://m.media-amazon.com/images/I/91OXOR85PxL._SX3000_.jpg" alt="" />
           </div>
 
           <div>
@@ -32,6 +32,10 @@ function Banner() {
 
           <div>
             <img loading='lazy' src="https://m.media-amazon.com/images/I/61Xrsa5UAOL._SX3000_.jpg" alt="" />
+          </div>
+          
+          <div>
+            <img loading='lazy' src="https://m.media-amazon.com/images/I/61JwtWNrYTL._SX3000_.jpg" alt="" />
           </div>
 
           

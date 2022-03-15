@@ -7,8 +7,10 @@ import { useRouter } from "next/router";
 
 function success() {
 
-  const { data: session } = useSession();
+  const { data: session, loading } = useSession();
   const router = useRouter();
+
+  if (loading) {
   return (
     <div className="bg-gray-100 h-screen">
       <Header />
@@ -17,9 +19,7 @@ function success() {
       <main className="max-w-screen-lg mx-auto">
         <div className="flex flex-col p-10 bg-white">
           <div className="ml-2 items-center space-x-2 mb-4 text-4xl font-bold text-yellow-500 ">
-            {session ? `Hello, ${session.user.name}` : (
-              null
-          )}
+            Hello, {session.user.name}
           </div>
           
           
@@ -45,25 +45,33 @@ function success() {
         </div>
       </main>
     </div>
+
   );
+}
+
+
+if (!loading && !session) {
+  return(
+<div className="bg-gray-100 h-screen">
+      <Header />
+      <Bottomnav />
+
+      <main className="max-w-screen-lg mx-auto">
+        <div className="flex flex-col p-10 bg-white">
+        <h1 className="text-3xl">
+          You must be signed in to view this page
+        </h1>
+        </div>
+      </main>
+    </div>
+  )
+}else{
+  router.push('/auth/signin')
+}
 }
 
 
 
 export default success;
 
-export async function getServerSideProps(context) {
-  
 
-  // Get the user logged in credential
-  const session = await getSession(context);
-
-  if (!session) {
-    const {res} = context
-    res.writeHead(302,{Location:"/auth/signin"})
-    res.end()
-    return {
-      props: {},
-    };
-  }
-}
