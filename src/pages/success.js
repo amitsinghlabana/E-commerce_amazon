@@ -10,7 +10,7 @@ function success() {
   const { data: session, loading } = useSession();
   const router = useRouter();
 
-  if (loading) {
+  if (session) {
   return (
     <div className="bg-gray-100 h-screen">
       <Header />
@@ -50,7 +50,7 @@ function success() {
 }
 
 
-if (!loading && !session) {
+if (!session) {
   return(
 <div className="bg-gray-100 h-screen">
       <Header />
