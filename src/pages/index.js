@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import ProductFeed from "../components/ProductFeed";
 
 
+
 export default function Home({ products }) {
   const [filteredProducts, setProducts] = useState(products);
 
@@ -23,13 +24,13 @@ export default function Home({ products }) {
         <link rel="icon" href="https://pngimg.com/uploads/amazon/amazon_PNG18.png" />
       
       </Head> */}
-
       <Header onSearchValue={filterProducts} />
       <Bottomnav />
 
       <main className="max-w-screen-2xl mx-auto">
         {/* Banner */}
         <Banner />
+        
 
         {/* ProductFeed */}
         
@@ -40,7 +41,7 @@ export default function Home({ products }) {
                     <h1 className="text-center text-2xl py-4">
                          No matching products…
                     </h1>
-                )}
+                )}       
       </main>
     </div>
   );
